@@ -1,23 +1,40 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
 import { auth } from "../../firebase/firebase.init";
+import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const Register = () => {
+  const { createUser } = use(AuthContext);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
-
-    createUserWithEmailAndPassword(auth, email, password)
+    createUser(email, password)
       .then((result) => {
         console.log(result.user);
       })
-      .catch((error) => {
+      .then((error) => {
         console.log(error);
       });
   };
+
+  // const handleRegister = (event) => {
+  //   event.preventDefault();
+  //   const email = event.target.email.value;
+  //   const password = event.target.password.value;
+  //   console.log(email, password);
+
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then((result) => {
+  //       console.log(result.user);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
@@ -51,7 +68,7 @@ const Register = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn btn-neutral mt-4">Login</button>
+            <button className="btn btn-neutral mt-4">Register</button>
           </fieldset>
         </form>
         <p>
