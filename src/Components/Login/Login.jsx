@@ -32,7 +32,10 @@ const Login = () => {
         </form>
         <p>
           New to Our Website? Please{" "}
-          <Link className="text-blue-500 hover:text-blue-800" to="/register">
+          <Link
+            className="text-blue-500 hover:text-blue-800    "
+            to="/register"
+          >
             Register
           </Link>
         </p>

@@ -1,4 +1,10 @@
 .menu a.active {
   text-decoration: underline;
-  color: cyan;
+  color: blueviolet;
+}
+.nav.active {
+  text-decoration: underline;
+  color: brown;
+  font-weight: bold;
+  background-color: skyblue;
 }
